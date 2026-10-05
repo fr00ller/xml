@@ -200,9 +200,9 @@ function qname( $value, $name = null, $noPrefixIsNoNamespace = false, $castExcep
 	{
 		return new QName( $prefix, $namespaceURI, $localName );
 	}
-	else if ( $namespaceDict && isset( $namespaceDict[ $prefix ] ) )
+	else if ( $namespaceDict && isset( $namespaceDict[ $prefix ?? '' ] ) )
 	{
-		return new QName( $prefix, $namespaceDict[ $prefix ], $localName );
+		return new QName( $prefix, $namespaceDict[ $prefix ?? '' ], $localName );
 	}
 	else if ( isset( $element ) )
 	{
