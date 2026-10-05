@@ -33,6 +33,7 @@ require_once __DIR__ . "/../functions.php";
 /**
  * Class implementation
  */
+#[\AllowDynamicProperties]
 class SchemaTypes
 {
 	/**
@@ -573,8 +574,8 @@ class SchemaTypes
 			$this->processedSchemasByNamespace = array_flip( $this->processedSchemas );
 		}
 
-		return isset( $this->processedSchemasByNamespace[ $namespace ] )
-			? $this->processedSchemasByNamespace[ $namespace ]
+		return isset( $this->processedSchemasByNamespace[ $namespace ?? '' ] )
+			? $this->processedSchemasByNamespace[ $namespace ?? '' ]
 			: false;
 	}
 
@@ -2142,7 +2143,7 @@ class SchemaTypes
 				'prefix' => $qn->prefix,
 				'name' => $qn->localName,
 			);
-			$typeNode['numeric'] = $typeNode['name'] == 'double' || $typeNode['name'] == 'decimal' || $typeNode['name'] == 'float' || ( isset( $carry[ $typeNode['parent'] ]['numeric'] ) && $carry[ $typeNode['parent'] ]['numeric'] );
+			$typeNode['numeric'] = $typeNode['name'] == 'double' || $typeNode['name'] == 'decimal' || $typeNode['name'] == 'float' || ( isset( $carry[ $typeNode['parent'] ?? '' ]['numeric'] ) && $carry[ $typeNode['parent'] ?? '' ]['numeric'] );
 			$carry[ $type ] = $typeNode;
 			return $carry;
 		}, array() );

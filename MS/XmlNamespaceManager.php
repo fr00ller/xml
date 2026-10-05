@@ -147,6 +147,7 @@ class XmlNamespaceManager implements IXmlNamespaceResolver, \IteratorAggregate
 	 * Count of the number of namespaces in the manager
 	 * @return number
 	 */
+	#[\ReturnTypeWillChange]
 	public function count()
 	{
 		return count( $this->namespaces );
@@ -164,6 +165,7 @@ class XmlNamespaceManager implements IXmlNamespaceResolver, \IteratorAggregate
 	/**
 	 * Get the iterator for foreach processing
 	 */
+	#[\ReturnTypeWillChange]
 	public function getIterator()
 	{
 		return new \ArrayIterator( $this->namespaces );
